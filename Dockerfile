@@ -16,6 +16,7 @@ RUN apk add --no-cache bash \
     tar \
     gzip \
     git \
+    sudo \
     php7-apache2 \
     php7-cli \
     php7-phar \

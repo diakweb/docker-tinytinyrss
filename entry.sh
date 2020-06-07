@@ -41,6 +41,9 @@ echo "Querying user"
 /usr/bin/mysqld --user=root --bootstrap --verbose=0 < $tfile
 echo "Done query"
 
+echo "Executing tt-rss update deamon"
+sudo -u apache /usr/bin/php /var/www/localhost/htdocs/update_daemon2.php
+
 # start mysql
 # nohup mysqld_safe --skip-grant-tables --bind-address 0.0.0.0 --user mysql > /dev/null 2>&1 &
 echo "Starting mariadb database"
