@@ -118,9 +118,6 @@ RUN chmod u+x /entry.sh
 COPY cron-ttrss /etc/periodic/15min/ttrss
 RUN chmod u+x /etc/periodic/15min/ttrss
 
-# Copy TinyTinyRSS configuration
-COPY ttrss-config.php /var/www/localhost/htdocs/config.php
-
 WORKDIR /var/www/localhost/htdocs/
 VOLUME /var/lib/mysql
 

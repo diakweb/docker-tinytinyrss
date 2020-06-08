@@ -41,19 +41,21 @@ echo "Querying user"
 /usr/bin/mysqld --user=root --bootstrap --verbose=0 < $tfile
 echo "Done query"
 
+echo "Configuring tt-rss"
+cp /var/www/localhost/htdocs/config.php-dist /var/www/localhost/htdocs/config.php
+sed -i "s#%DB_TYPE#mysql#" /var/www/localhost/htdocs/config.php
+sed -i "s#%DB_USER#${DB_USER}#" /var/www/localhost/htdocs/config.php
+sed -i "s#%DB_NAME#${DB_NAME}#" /var/www/localhost/htdocs/config.php
+sed -i "s#%DB_PASS#${DB_PASSWD}#" /var/www/localhost/htdocs/config.php
+sed -i "s#%DB_HOST#localhost#" /var/www/localhost/htdocs/config.php
+sed -i "s#%DB_PORT#3306#" /var/www/localhost/htdocs/config.php
+sed -i "s#%SELF_URL_PATH#${SELF_URL_PATH}#" /var/www/localhost/htdocs/config.php
+
+echo "Executing crond"
+crond -b
+
 # start mysql
 # nohup mysqld_safe --skip-grant-tables --bind-address 0.0.0.0 --user mysql > /dev/null 2>&1 &
 echo "Starting mariadb database"
-/usr/bin/mysqld --user=root --init-file=$tfile
-
-cp /var/www/localhost/htdocs/config.php-dist /var/www/localhost/htdocs/config.php
-sed -i 's#%DB_TYPE#mysql#' /var/www/localhost/htdocs/config.php && \
-sed -i 's#%DB_USER#${DB_USER}#' /var/www/localhost/htdocs/config.php && \
-sed -i 's#%DB_NAME#${DB_NAME}#' /var/www/localhost/htdocs/config.php && \
-sed -i 's#%DB_PASS#${DB_PASSWD}#' /var/www/localhost/htdocs/config.php && \
-sed -i 's#%SELF_URL_PATH#${SELF_URL_PATH}#' /var/www/localhost/htdocs/config.php
-
-
-# executing cron
-crond -b
+exec /usr/bin/mysqld --user=root --init-file=$tfile
 
