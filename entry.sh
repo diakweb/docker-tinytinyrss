@@ -41,11 +41,19 @@ echo "Querying user"
 /usr/bin/mysqld --user=root --bootstrap --verbose=0 < $tfile
 echo "Done query"
 
-echo "Executing tt-rss update deamon"
-sudo -u apache /usr/bin/php /var/www/localhost/htdocs/update_daemon2.php
-
 # start mysql
 # nohup mysqld_safe --skip-grant-tables --bind-address 0.0.0.0 --user mysql > /dev/null 2>&1 &
 echo "Starting mariadb database"
-exec /usr/bin/mysqld --user=root --init-file=$tfile
+/usr/bin/mysqld --user=root --init-file=$tfile
+
+cp /var/www/localhost/htdocs/config.php-dist /var/www/localhost/htdocs/config.php
+sed -i 's#%DB_TYPE#mysql#' /var/www/localhost/htdocs/config.php && \
+sed -i 's#%DB_USER#${DB_USER}#' /var/www/localhost/htdocs/config.php && \
+sed -i 's#%DB_NAME#${DB_NAME}#' /var/www/localhost/htdocs/config.php && \
+sed -i 's#%DB_PASS#${DB_PASSWD}#' /var/www/localhost/htdocs/config.php && \
+sed -i 's#%SELF_URL_PATH#${SELF_URL_PATH}#' /var/www/localhost/htdocs/config.php
+
+
+# executing cron
+crond -b
 

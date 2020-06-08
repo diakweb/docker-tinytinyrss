@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo -u apache /usr/bin/php /var/www/localhost/htdocs/update.php --feeds --quiet

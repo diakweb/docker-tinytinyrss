@@ -85,10 +85,6 @@ RUN tar xzvpf /var/www/localhost/htdocs/plugins/fever/master.tar.gz --strip-comp
     tar xzvpf /var/www/localhost/htdocs/themes.local/feedly.tar.gz --strip-components=1 --wildcards -C /var/www/localhost/htdocs/themes.local/ tt-rss-feedly-theme-master/feedly tt-rss-feedly-theme-master/feedly*.css && rm -rf /var/www/localhost/htdocs/themes.local/feedly.tar.gz && \
     tar xzvpf /var/www/localhost/htdocs/themes.local/rsshub.tar.gz --strip-components=2 -C /var/www/localhost/htdocs/themes.local/ ttrss-theme-rsshub-master/dist/rsshub.css && rm -rf /var/www/localhost/htdocs/themes.local/rsshub.tar.gz 
 
-#    sed -i 's#AllowOverride none#AllowOverride All#' /etc/apache2/httpd.conf && \
-#    sed -i 's#Require all denied#Require all granted#' /etc/apache2/httpd.conf && \
-#    sed -i 's#^DocumentRoot ".*#DocumentRoot "/var/www/localhost/htdocs"#g' /etc/apache2/httpd.conf && \
-
 # configure mysql, apache
 RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld /var/lib/mysql && \
     mkdir -p /run/apache2 && chown -R apache:apache /run/apache2 && chown -R apache:apache /var/www/localhost/htdocs/ && \
@@ -114,13 +110,16 @@ RUN echo "zend_extension=xdebug.so" > /etc/php7/conf.d/xdebug.ini && \
     echo "xdebug.idekey=PHPSTORM" >> /etc/php7/conf.d/xdebug.ini && \ 
     echo "xdebug.remote_log=\"/tmp/xdebug.log\"" >> /etc/php7/conf.d/xdebug.ini
 
+# Copy entrypoint
 COPY entry.sh /entry.sh
-# RUN sed -i "s#DB_NAME#${DB_NAME}#g" /entry.sh && \
-#     sed -i "s#DB_USER#${DB_USER}#g" /entry.sh && \
-#     sed -i "s#DB_PASSWD#${DB_PASSWD}#" /entry.sh
-
-
 RUN chmod u+x /entry.sh
+
+# Copy cron job to update RSS feeds
+COPY cron-ttrss /etc/periodic/15min/ttrss
+RUN chmod u+x /etc/periodic/15min/ttrss
+
+# Copy TinyTinyRSS configuration
+COPY ttrss-config.php /var/www/localhost/htdocs/config.php
 
 WORKDIR /var/www/localhost/htdocs/
 VOLUME /var/lib/mysql
