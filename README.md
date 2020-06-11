@@ -32,7 +32,7 @@ Example :
     docker start tinytinyrss
 
 
-## Update
+## Update image
 Example :
 
     docker pull diakweb/docker-tinytinyrss
@@ -49,3 +49,8 @@ Example :
         --restart always \
     docker start tinytinyrss
 
+
+## Update TinyTinyRSS
+
+    docker exec -it tinytinyrss git pull
+    
