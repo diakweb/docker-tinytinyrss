@@ -51,6 +51,7 @@ Example :
 
 
 ## Update TinyTinyRSS
+TinyTinyRSS is updated at every restart of the container but you can force update without restarting by executing this command :
 
     docker exec -it tinytinyrss git pull
     
