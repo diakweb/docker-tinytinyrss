@@ -54,6 +54,9 @@ sed -i "s#%SELF_URL_PATH#${SELF_URL_PATH}#" /var/www/localhost/htdocs/config.php
 echo "Executing crond"
 crond -b
 
+echo "Update TinyTinyRSS : git pull" 
+git pull
+
 # start mysql
 # nohup mysqld_safe --skip-grant-tables --bind-address 0.0.0.0 --user mysql > /dev/null 2>&1 &
 echo "Starting mariadb database"
