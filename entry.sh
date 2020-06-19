@@ -37,6 +37,12 @@ cat << EOF > $tfile
     FLUSH PRIVILEGES;
 EOF
 
+if [ ! -d /var/lib/mysql/ttrss ]; then
+    echo "\n\n" >> $tfile
+    cat /var/www/localhost/htdocs/schema/ttrss_schema_mysql.sql >> $tfile
+fi;
+
+
 echo "Querying user"
 /usr/bin/mysqld --user=root --bootstrap --verbose=0 < $tfile
 echo "Done query"
