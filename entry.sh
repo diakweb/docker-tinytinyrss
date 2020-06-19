@@ -38,7 +38,9 @@ cat << EOF > $tfile
 EOF
 
 if [ ! -d /var/lib/mysql/ttrss ]; then
-    echo "\n\n" >> $tfile
+    echo "" >> $tfile
+    echo "" >> $tfile
+    echo "USE ${DB_NAME}"
     cat /var/www/localhost/htdocs/schema/ttrss_schema_mysql.sql >> $tfile
 fi;
 
