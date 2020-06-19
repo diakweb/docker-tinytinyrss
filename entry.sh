@@ -40,7 +40,8 @@ EOF
 if [ ! -d /var/lib/mysql/ttrss ]; then
     echo "" >> $tfile
     echo "" >> $tfile
-    echo "USE ${DB_NAME}"
+    echo "USE ${DB_NAME}" >> $tfile
+    echo "" >> $tfile
     cat /var/www/localhost/htdocs/schema/ttrss_schema_mysql.sql >> $tfile
 fi;
 
