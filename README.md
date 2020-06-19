@@ -32,6 +32,10 @@ Example :
     docker start tinytinyrss
 
 
+Default account is :
+- login : admin
+- password : password
+
 ## Update image
 Example :
 
