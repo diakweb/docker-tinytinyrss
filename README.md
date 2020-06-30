@@ -12,6 +12,7 @@ Inspired by https://hub.docker.com/r/wangqiru/ttrss
 - FeedReader
 - options_per_feed
 - ttrss-plugin-remove-iframe-sandbox
+- Wallabag
 
 ## Themes included
 - tt-rss-feedly-theme

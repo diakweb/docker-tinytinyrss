@@ -68,6 +68,9 @@ ADD https://raw.githubusercontent.com/jangernert/FeedReader/master/data/tt-rss-f
 ADD https://github.com/sergey-dryabzhinsky/options_per_feed/archive/master.tar.gz /var/www/localhost/htdocs/plugins/options_per_feed/
 ## Remove iframe sandbox
 ADD https://github.com/DIYgod/ttrss-plugin-remove-iframe-sandbox/archive/master.tar.gz /var/www/localhost/htdocs/plugins/remove_iframe_sandbox/
+## Wallabag
+ADD https://github.com/joshp23/ttrss-to-wallabag-v2/archive/master.tar.gz /var/www/localhost/htdocs/plugins/wallabag_v2/
+
 # Download themes
 ## Feedly
 ADD https://github.com/levito/tt-rss-feedly-theme/archive/master.tar.gz /var/www/localhost/htdocs/themes.local/feedly.tar.gz
@@ -82,6 +85,7 @@ RUN tar xzvpf /var/www/localhost/htdocs/plugins/fever/master.tar.gz --strip-comp
     tar xzvpf /var/www/localhost/htdocs/plugins/api_newsplus/master.tar.gz --strip-components=2 -C /var/www/localhost/htdocs/plugins/api_newsplus tt-rss-newsplus-plugin-master/api_newsplus && rm /var/www/localhost/htdocs/plugins/api_newsplus/master.tar.gz && \
     tar xzvpf /var/www/localhost/htdocs/plugins/options_per_feed/master.tar.gz --strip-components=1 -C /var/www/localhost/htdocs/plugins/options_per_feed options_per_feed-master && rm /var/www/localhost/htdocs/plugins/options_per_feed/master.tar.gz && \
     tar xzvpf /var/www/localhost/htdocs/plugins/remove_iframe_sandbox/master.tar.gz --strip-components=1 -C /var/www/localhost/htdocs/plugins/remove_iframe_sandbox ttrss-plugin-remove-iframe-sandbox-master && rm /var/www/localhost/htdocs/plugins/remove_iframe_sandbox/master.tar.gz && \
+    tar xzvpf /var/www/localhost/htdocs/plugins/wallabag_v2/master.tar.gz --strip-components=2 -C /var/www/localhost/htdocs/plugins/wallabag_v2 ttrss-to-wallabag-v2-master/wallabag_v2 && rm /var/www/localhost/htdocs/plugins/wallabag_v2/master.tar.gz && \
     tar xzvpf /var/www/localhost/htdocs/themes.local/feedly.tar.gz --strip-components=1 --wildcards -C /var/www/localhost/htdocs/themes.local/ tt-rss-feedly-theme-master/feedly tt-rss-feedly-theme-master/feedly*.css && rm -rf /var/www/localhost/htdocs/themes.local/feedly.tar.gz && \
     tar xzvpf /var/www/localhost/htdocs/themes.local/rsshub.tar.gz --strip-components=2 -C /var/www/localhost/htdocs/themes.local/ ttrss-theme-rsshub-master/dist/rsshub.css && rm -rf /var/www/localhost/htdocs/themes.local/rsshub.tar.gz 
 
