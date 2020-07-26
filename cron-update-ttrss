@@ -1,0 +1,2 @@
+#!/bin/bash
+cd /var/www/localhost/htdocs; /usr/bin/git pull

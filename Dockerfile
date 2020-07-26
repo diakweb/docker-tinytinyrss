@@ -122,6 +122,10 @@ RUN chmod u+x /entry.sh
 COPY cron-ttrss /etc/periodic/15min/ttrss
 RUN chmod u+x /etc/periodic/15min/ttrss
 
+# Copy cron job to update TTRSS every hour
+COPY cron-update-ttrss /etc/periodic/hoursly/ttrss-update
+RUN chmod u+x /etc/periodic/hoursly/ttrss-update
+
 WORKDIR /var/www/localhost/htdocs/
 VOLUME /var/lib/mysql
 
