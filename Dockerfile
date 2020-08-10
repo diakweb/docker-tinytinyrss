@@ -123,7 +123,7 @@ COPY cron-ttrss /etc/periodic/15min/ttrss
 RUN chmod u+x /etc/periodic/15min/ttrss
 
 # Copy cron job to update TTRSS every hour
-COPY cron-update-ttrss /etc/periodic/hoursly/ttrss-update
+COPY cron-update-ttrss /etc/periodic/hourly/ttrss-update
 RUN chmod u+x /etc/periodic/hoursly/ttrss-update
 
 WORKDIR /var/www/localhost/htdocs/
