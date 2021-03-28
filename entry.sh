@@ -51,14 +51,16 @@ echo "Querying user"
 echo "Done query"
 
 echo "Configuring tt-rss"
-cp /var/www/localhost/htdocs/config.php-dist /var/www/localhost/htdocs/config.php
-sed -i "s#%DB_TYPE#mysql#" /var/www/localhost/htdocs/config.php
-sed -i "s#%DB_USER#${DB_USER}#" /var/www/localhost/htdocs/config.php
-sed -i "s#%DB_NAME#${DB_NAME}#" /var/www/localhost/htdocs/config.php
-sed -i "s#%DB_PASS#${DB_PASSWD}#" /var/www/localhost/htdocs/config.php
-sed -i "s#%DB_HOST#localhost#" /var/www/localhost/htdocs/config.php
-sed -i "s#%DB_PORT#3306#" /var/www/localhost/htdocs/config.php
-sed -i "s#%SELF_URL_PATH#${SELF_URL_PATH}#" /var/www/localhost/htdocs/config.php
+cat >/var/www/localhost/htdocs/config.php <<EOL
+<?php
+putenv('TTRSS_DB_TYPE=mysql');
+putenv('TTRSS_DB_USER=${DB_USER}');
+putenv('TTRSS_DB_NAME=${DB_NAME}');
+putenv('TTRSS_DB_PASS=${DB_PASSWD}');
+putenv('TTRSS_DB_HOST=localhost');
+putenv('TTRSS_DB_PORT=3306');
+putenv('TTRSS_SELF_URL_PATH=${SELF_URL_PATH}');
+EOL
 
 echo "Executing crond"
 crond -b
