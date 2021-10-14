@@ -1,5 +1,5 @@
 # All-in-one TinyTinyRSS image
-A all-in-one docker image for TinyTinyRSS based on Alpine 3.12 x64 and integrating Apache, PHP7 and MariaDB.
+A all-in-one docker image for TinyTinyRSS based on Alpine 3.13 x64 and integrating Apache, PHP7 and MariaDB.
 
 Inspired by https://hub.docker.com/r/wangqiru/ttrss
 
