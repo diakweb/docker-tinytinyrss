@@ -107,12 +107,12 @@ RUN sed -i 's#display_errors = Off#display_errors = On#' /etc/php7/php.ini && \
 
 
 # Configure xdebug
-RUN echo "zend_extension=xdebug.so" > /etc/php7/conf.d/xdebug.ini && \ 
-    echo -e "\n[XDEBUG]"  >> /etc/php7/conf.d/xdebug.ini && \ 
-    echo "xdebug.remote_enable=1" >> /etc/php7/conf.d/xdebug.ini && \  
-    echo "xdebug.remote_connect_back=1" >> /etc/php7/conf.d/xdebug.ini && \ 
-    echo "xdebug.idekey=PHPSTORM" >> /etc/php7/conf.d/xdebug.ini && \ 
-    echo "xdebug.remote_log=\"/tmp/xdebug.log\"" >> /etc/php7/conf.d/xdebug.ini
+#RUN echo "zend_extension=xdebug.so" > /etc/php7/conf.d/xdebug.ini && \ 
+#    echo -e "\n[XDEBUG]"  >> /etc/php7/conf.d/xdebug.ini && \ 
+#    echo "xdebug.remote_enable=1" >> /etc/php7/conf.d/xdebug.ini && \  
+#    echo "xdebug.remote_connect_back=1" >> /etc/php7/conf.d/xdebug.ini && \ 
+#    echo "xdebug.idekey=PHPSTORM" >> /etc/php7/conf.d/xdebug.ini && \ 
+#    echo "xdebug.remote_log=\"/tmp/xdebug.log\"" >> /etc/php7/conf.d/xdebug.ini
 
 # Copy entrypoint
 COPY entry.sh /entry.sh
