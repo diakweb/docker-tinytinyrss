@@ -17,33 +17,33 @@ RUN apk add --no-cache bash \
     gzip \
     git \
     sudo \
-    php7-apache2 \
-    php7-cli \
-    php7-phar \
-    php7-zlib \
-    php7-zip \
-    php7-bz2 \
-    php7-ctype \
-    php7-curl \
-    php7-pdo_mysql \
-    php7-mysqli \
-    php7-json \
-    php7-mcrypt \
-    php7-xml \
-    php7-dom \
-    php7-iconv \
-    php7-xdebug \
-    php7-session \
-    php7-intl \
-    php7-gd \
-    php7-mbstring \
-    php7-apcu \
-    php7-opcache \
-    php7-tokenizer \
-    php7-fpm \
-    php7-fileinfo \
-    php7-pcntl \
-    php7-posix 
+    php8-apache2 \
+    php8-cli \
+    php8-phar \
+    php8-zlib \
+    php8-zip \
+    php8-bz2 \
+    php8-ctype \
+    php8-curl \
+    php8-pdo_mysql \
+    php8-mysqli \
+    php8-json \
+    php8-mcrypt \
+    php8-xml \
+    php8-dom \
+    php8-iconv \
+    php8-xdebug \
+    php8-session \
+    php8-intl \
+    php8-gd \
+    php8-mbstring \
+    php8-apcu \
+    php8-opcache \
+    php8-tokenizer \
+    php8-fpm \
+    php8-fileinfo \
+    php8-pcntl \
+    php8-posix 
 
 RUN curl -sS https://getcomposer.org/installer | \
     php -- --install-dir=/usr/bin --filename=composer
@@ -99,20 +99,20 @@ RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld /var/lib/mysql && \
     sed -i -e"s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/my.cnf.d/mariadb-server.cnf && \
     sed -i '/mariadb\]/a skip-external-locking' /etc/my.cnf.d/mariadb-server.cnf 
 
-RUN sed -i 's#display_errors = Off#display_errors = On#' /etc/php7/php.ini && \
-    sed -i 's#upload_max_filesize = 2M#upload_max_filesize = 100M#' /etc/php7/php.ini && \
-    sed -i 's#post_max_size = 8M#post_max_size = 100M#' /etc/php7/php.ini && \
-    sed -i 's#session.cookie_httponly =#session.cookie_httponly = true#' /etc/php7/php.ini && \
-    sed -i 's#error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT#error_reporting = E_ALL#' /etc/php7/php.ini
+RUN sed -i 's#display_errors = Off#display_errors = On#' /etc/php8/php.ini && \
+    sed -i 's#upload_max_filesize = 2M#upload_max_filesize = 100M#' /etc/php8/php.ini && \
+    sed -i 's#post_max_size = 8M#post_max_size = 100M#' /etc/php8/php.ini && \
+    sed -i 's#session.cookie_httponly =#session.cookie_httponly = true#' /etc/php8/php.ini && \
+    sed -i 's#error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT#error_reporting = E_ALL#' /etc/php8/php.ini
 
 
 # Configure xdebug
-#RUN echo "zend_extension=xdebug.so" > /etc/php7/conf.d/xdebug.ini && \ 
-#    echo -e "\n[XDEBUG]"  >> /etc/php7/conf.d/xdebug.ini && \ 
-#    echo "xdebug.remote_enable=1" >> /etc/php7/conf.d/xdebug.ini && \  
-#    echo "xdebug.remote_connect_back=1" >> /etc/php7/conf.d/xdebug.ini && \ 
-#    echo "xdebug.idekey=PHPSTORM" >> /etc/php7/conf.d/xdebug.ini && \ 
-#    echo "xdebug.remote_log=\"/tmp/xdebug.log\"" >> /etc/php7/conf.d/xdebug.ini
+#RUN echo "zend_extension=xdebug.so" > /etc/php8/conf.d/xdebug.ini && \ 
+#    echo -e "\n[XDEBUG]"  >> /etc/php8/conf.d/xdebug.ini && \ 
+#    echo "xdebug.remote_enable=1" >> /etc/php8/conf.d/xdebug.ini && \  
+#    echo "xdebug.remote_connect_back=1" >> /etc/php8/conf.d/xdebug.ini && \ 
+#    echo "xdebug.idekey=PHPSTORM" >> /etc/php8/conf.d/xdebug.ini && \ 
+#    echo "xdebug.remote_log=\"/tmp/xdebug.log\"" >> /etc/php8/conf.d/xdebug.ini
 
 # Copy entrypoint
 COPY entry.sh /entry.sh
