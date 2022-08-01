@@ -27,8 +27,7 @@ RUN apk add --no-cache bash \
     php8-curl \
     php8-pdo_mysql \
     php8-mysqli \
-    php8-json \
-    php8-mcrypt \
+    php8-json \ # php8-mcrypt \
     php8-xml \
     php8-dom \
     php8-iconv \
