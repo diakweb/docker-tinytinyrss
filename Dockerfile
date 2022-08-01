@@ -45,7 +45,7 @@ RUN apk add --no-cache bash \
     php8-posix 
 
 RUN curl -sS https://getcomposer.org/installer | \
-    php -- --install-dir=/usr/bin --filename=composer
+    php8 -- --install-dir=/usr/bin --filename=composer
 
 RUN rm -rf https://git.tt-rss.org/fox/tt-rss.git /var/www/localhost/htdocs/* && \
     git clone https://git.tt-rss.org/fox/tt-rss.git /var/www/localhost/htdocs
