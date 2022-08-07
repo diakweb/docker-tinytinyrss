@@ -66,6 +66,7 @@ echo "Executing crond"
 crond -b
 
 echo "Update TinyTinyRSS : git pull" 
+git config --global --add safe.directory /var/www/localhost/htdocs
 git pull
 
 # start mysql
