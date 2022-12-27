@@ -47,8 +47,6 @@ RUN apk add --no-cache bash \
 RUN curl -sS https://getcomposer.org/installer | \
     php81 -- --install-dir=/usr/bin --filename=composer
 
-RUN find /etc/ -type f -name "php.ini"
-
 RUN rm -rf https://git.tt-rss.org/fox/tt-rss.git /var/www/localhost/htdocs/* && \
     git clone https://git.tt-rss.org/fox/tt-rss.git /var/www/localhost/htdocs
 
@@ -100,11 +98,11 @@ RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld /var/lib/mysql && \
     sed -i -e"s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/my.cnf.d/mariadb-server.cnf && \
     sed -i '/mariadb\]/a skip-external-locking' /etc/my.cnf.d/mariadb-server.cnf 
 
-RUN sed -i 's#display_errors = Off#display_errors = On#' /etc/php8/php.ini && \
-    sed -i 's#upload_max_filesize = 2M#upload_max_filesize = 100M#' /etc/php8/php.ini && \
-    sed -i 's#post_max_size = 8M#post_max_size = 100M#' /etc/php8/php.ini && \
-    sed -i 's#session.cookie_httponly =#session.cookie_httponly = true#' /etc/php8/php.ini && \
-    sed -i 's#error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT#error_reporting = E_ALL#' /etc/php8/php.ini
+RUN sed -i 's#display_errors = Off#display_errors = On#' /etc/php81/php.ini && \
+    sed -i 's#upload_max_filesize = 2M#upload_max_filesize = 100M#' /etc/php81/php.ini && \
+    sed -i 's#post_max_size = 8M#post_max_size = 100M#' /etc/php81/php.ini && \
+    sed -i 's#session.cookie_httponly =#session.cookie_httponly = true#' /etc/php81/php.ini && \
+    sed -i 's#error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT#error_reporting = E_ALL#' /etc/php81/php.ini
 
 
 # Configure xdebug
