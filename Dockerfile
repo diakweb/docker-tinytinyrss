@@ -47,6 +47,8 @@ RUN apk add --no-cache bash \
 RUN curl -sS https://getcomposer.org/installer | \
     php81 -- --install-dir=/usr/bin --filename=composer
 
+RUN find /etc/ -type f -name "php.ini"
+
 RUN rm -rf https://git.tt-rss.org/fox/tt-rss.git /var/www/localhost/htdocs/* && \
     git clone https://git.tt-rss.org/fox/tt-rss.git /var/www/localhost/htdocs
 
