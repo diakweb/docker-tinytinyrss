@@ -1,5 +1,5 @@
 # All-in-one TinyTinyRSS image
-A all-in-one docker image for TinyTinyRSS based on Alpine 3.17 x64 and integrating Apache, PHP8 and MariaDB.
+A all-in-one docker image for TinyTinyRSS based on Alpine 3.17 x64 and integrating Apache, PHP 8.1 and MariaDB.
 
 FYI : TinyTinyRSS doesn't seem to work with Safari browser
 

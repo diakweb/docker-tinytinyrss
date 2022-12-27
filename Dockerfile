@@ -17,32 +17,32 @@ RUN apk add --no-cache bash \
     gzip \
     git \
     sudo \
-    php8-apache2 \
-    php8-cli \
-    php8-phar \
-    php8-zlib \
-    php8-zip \
-    php8-bz2 \
-    php8-ctype \
-    php8-curl \
-    php8-pdo_mysql \
-    php8-mysqli \
-    php8-json \
-    php8-xml \
-    php8-dom \
-    php8-iconv \
-    php8-xdebug \
-    php8-session \
-    php8-intl \
-    php8-gd \
-    php8-mbstring \
-    php8-apcu \
-    php8-opcache \
-    php8-tokenizer \
-    php8-fpm \
-    php8-fileinfo \
-    php8-pcntl \
-    php8-posix 
+    php81-apache2 \
+    php81-cli \
+    php81-phar \
+    php81-zlib \
+    php81-zip \
+    php81-bz2 \
+    php81-ctype \
+    php81-curl \
+    php81-pdo_mysql \
+    php81-mysqli \
+    php81-json \
+    php81-xml \
+    php81-dom \
+    php81-iconv \
+    php81-xdebug \
+    php81-session \
+    php81-intl \
+    php81-gd \
+    php81-mbstring \
+    php81-apcu \
+    php81-opcache \
+    php81-tokenizer \
+    php81-fpm \
+    php81-fileinfo \
+    php81-pcntl \
+    php81-posix 
 
 RUN curl -sS https://getcomposer.org/installer | \
     php8 -- --install-dir=/usr/bin --filename=composer
