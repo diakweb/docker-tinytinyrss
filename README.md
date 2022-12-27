@@ -1,5 +1,5 @@
 # All-in-one TinyTinyRSS image
-A all-in-one docker image for TinyTinyRSS based on Alpine 3.15 x64 and integrating Apache, PHP8 and MariaDB.
+A all-in-one docker image for TinyTinyRSS based on Alpine 3.17 x64 and integrating Apache, PHP8 and MariaDB.
 
 FYI : TinyTinyRSS doesn't seem to work with Safari browser
 
@@ -62,7 +62,7 @@ TinyTinyRSS is updated hourly or at every restart of the container but you can f
 
     docker exec -it tinytinyrss git pull
 
-If needed, to updat ethe schema, executre this command :
+If needed, to update the schema, execute this command :
 
     docker exec --user apache -it ttrss php ./update.php --update-schema
 
